@@ -7,6 +7,11 @@ import { mapIconsResult, mapIconResult } from './util';
 export class IconsController {
   constructor(private readonly iconsService: IconsService) {}
 
+  @Get('ping')
+  async ping(): Promise<any> {
+    return { ok: 'pong' };
+  }
+
   @Get('search/:term')
   async getByTerm(@Param('term') term: string): Promise<any> {
     const response = await this.iconsService.getByTerm(term).toPromise();
